@@ -541,13 +541,22 @@
   #contact #wizardContent [style*="white-space:pre-wrap"] { overflow-wrap:anywhere; word-break:break-word; }
   #contact #wizardContent [style*="display:flex"][style*="flex-wrap"] { min-width:0; }
   @media (max-width:600px) {
-    #contact .w { width:100%; max-width:100%; }
+    #contact .w { max-width:100%; }   /* keep the laptop width (72%) so the window stays inside the screen */
     #contact .wbar { gap:.45em; }
     #contact .wbar .n { font-size:.8em; overflow-wrap:anywhere; }
     #contact .wbar .c { gap:.55em; }
     #contact #projectWizard { font-size:.92em; }
     #contact #wizardProgress { white-space:nowrap; }
     #contact #wizardNext { min-width:0; }
+  }
+
+  /* phones & touch screens only: a bigger, easier-to-tap EXIT full screen button while in full screen (laptop and the small in-window button untouched) */
+  @media (hover:none) and (pointer:coarse), (max-width:600px) {
+    .playerbox:fullscreen .player-fullscreen, .playerbox:-webkit-full-screen .player-fullscreen,
+    #homeVimeoPlayer:fullscreen .home-video-fullscreen, #homeVimeoPlayer:-webkit-full-screen .home-video-fullscreen {
+      font-size:12px; padding:.6em .9em;
+      top:calc(1em + env(safe-area-inset-top, 0px)); right:calc(1em + env(safe-area-inset-right, 0px));
+    }
   }
 
 </style>
